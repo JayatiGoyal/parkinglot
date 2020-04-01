@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="home-style.css" type="text/css">
+</head>
+<body>
+	<header>
+		<div class="main">
+			<div class="logo">
+				<img src="logo1.jpg">
+			</div>
+			<ul>
+				<li><a href="home.html">HOME</a></li>
+				<li class="active"><a href="#">LOGIN</a></li>
+				<li><a href="contact.html">CONTACT</a></li>
+				<li><a href="about.html">ABOUT</a></li>
+			</ul>
+		</div>
+
+		<form class="form-signin" action="http://localhost/hey.php" method="post">
+      
+      		<h1 ><font color="white">Please log in</font></h1>
+      		<label for="inputEmail" class="sr-only"></label>
+          <br>
+      		<input type="text" name='username' id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+          <br>
+      		<label for="inputPassword" class="sr-only"></label>
+          <br>
+      		<input type="password" id="inputPassword" name='password' class="form-control" placeholder="Password" required>
+   			<br>
+   	  		<br>
+      		<div class="checkbox mb-3">
+        		<label>
+          			<input type="checkbox" value="remember-me" ><font color="white"> Remember me
+        		</label>
+        		<br>
+        		<br>
+      		</div>
+      		<br>
+      		<button class="btn btn-primary" type="submit"><font color="black">Sign in</button>
+      
+    	</form>
+	</header>
+</body>
+</html>
