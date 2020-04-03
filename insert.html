@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vehicle Entry</title>
+	<link rel="stylesheet" href="insert.css" type="text/css">
+</head>
+<body>
+	<header>
+		<div class="main">
+			<div class="logo">
+				<img src="logo1.jpg">
+			</div>
+			<ul>
+				<li><a href="home.html">HOME</a></li>
+				<li><a href="login.html">LOGOUT</a></li>
+			</ul>
+		</div>
+		
+		<form class="form-signin" action="http://localhost/insert.php" method="post">
+      
+      		<h1 ><font color="white"> &nbspEnter Vehicle</font></h1>
+          	<br>
+      		<input type="text" name='veh_id' class="form-control" placeholder="Vehice Number" required autofocus>
+      		<br></br>
+				<input type="text" name='type' class="form-control" placeholder="Type" required autofocus><br></br>          
+      		<input type="text" name='owner' class="form-control" placeholder="Owner Name" required autofocus><br></br>
+      		<input type="text" name='phone_no' class="form-control" placeholder="Phone Number" required autofocus>
+      		<br><br><br>
+      		&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+      		<button class="btn" type="submit"><font color="black">INSERT</button>   	  		
+    	</form>
+    
+    	
+</header>
+</body>
+</html>
