@@ -35,6 +35,13 @@ $i_time=date('d-m-Y H:i:s');
 $i_name=$_POST['owner'];
 $i_phone=$_POST['phone_no'];
 
+if(strlen($i_phone)!=10){	
+		echo '<script language="javascript">';
+		echo 'alert("PHONE NUMBER INVALID!");
+		window.location.href="http://localhost/PL/insert.html"';
+		echo '</script>';
+}	
+
 $i_q1="SELECT * FROM SLOT WHERE STATUS=0x00 AND DIMENSION='$i_type'" ;
 
 $i_res1=mysqli_query($con,$i_q1);
