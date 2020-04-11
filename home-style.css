@@ -1,3 +1,4 @@
+
 *{
   margin: 0;
   padding: 0;
@@ -5,10 +6,25 @@
 }
 
 header{
-  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(bg2.jpg);
-  height: 100vh;
+background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(bg2.jpg);
+
+   height: 100vh;
   background-size: cover;
   background-position: center;
+}
+table{ 
+
+padding-top:10px;
+padding-left:40px;
+color:white;
+}
+
+h2{
+padding:70px;}
+
+th, td {
+  border: 1px solid white;
+  padding:5px;
 }
 
 ul{
