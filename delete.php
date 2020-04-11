@@ -10,7 +10,7 @@
 				$flag=1;
 				break;
 			}
-	}
+	}}
 
 	function getPrice($time){
 		$time=$time/60;
@@ -23,7 +23,7 @@
 	}
 
 	$con=mysqli_connect('localhost','root');
-	mysqli_select_db($con,'parking_lot');
+	mysqli_select_db($con,'parking lot');
 	date_default_timezone_set('Asia/Kolkata');						//To get the time
 
 	if(isset($_POST['veh_id'])){
@@ -44,6 +44,7 @@
 		echo 'alert("VEHICLE DOES NOT EXIST!");
 		window.location.href="http://localhost/PL/delete.html"';
 		echo '</script>';
+		mysqli_close($con);
 	}
 	else{
 		$i_row=mysqli_fetch_row($i_res1);
@@ -66,11 +67,102 @@
 	$price=getPrice($i_time);
 
 	if ($i_res4) {
-		echo '<script language="javascript">';
+	$time=gmdate($i_time);
+		/*echo '<script language="javascript">';
 		echo 'alert("VEHICLE REMOVED SUCCESSFULLY!!");
 		window.location.href="http://localhost/PL/after-login.html"';
 		echo '</script>';
-		mysqli_close($con);
-	}
+		mysqli_close($con);*/
+		require_once '/home/vibhanshi/vendor/autoload.php';
+	session_start();
+	$mpdf = new \Mpdf\Mpdf(['format' => [150, 220]]);
+	$bo=3;
+	$time="H:i:s";
+	$align="center";
+	$data="";
+	$data.="
+	<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+	body{
+				text-align: center;
+				border-style: solid;
+				border-width: 5px;
+				border-radius: 15px;
+				background: #fff;
+				width: 500PX;
+				margin: auto;
+			}
 
+			h1{
+				text-decoration: underline;
+			}
+
+}
+</style>
+</head>
+<body>
+		<h1>TICKET</h1>
+
+		<h2>SLOT NO.</h2>
+		<p> $i_slot </p>
+
+		<table border=$bo align=$align>
+
+			<tr>
+				<th>Duration</th>
+				<td>$i_time</td>
+			</tr>
+
+			<tr>
+				<th>Vehicle no</th>
+				<td>$i_veh_id</td>
+			</tr>
+
+		</table>
+		<br>
+		<h2> YOUR FARE : Rs.$price </h2>
+		<br>
+	<h3>PARKING CHARGES</h3>
+		<table border=$bo align=$align>
+
+			<tr>
+				<td>0-3 hours</td>
+				<td>₹50</td>
+			</tr>
+
+			<tr>
+				<td>3-4 hours</td>
+				<td>₹60</td>
+			</tr>
+
+			<tr>
+				<td>4+ hours</td>
+				<td>₹80</td>
+			</tr>
+		</table>
+		<br>
+		<div>
+		<h2>THANK YOU! </h2>
+		<br>
+		<h2>VISIT AGAIN</h2>
+			
+		</div>
+
+	</body>
+);";
+ $mpdf->WriteHTML($data);
+	$mpdf->Output('myfile.pdf','D');
+}
+
+	
 ?>
+
+
+
+
+  
