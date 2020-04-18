@@ -84,6 +84,23 @@ if (!$i_res1) {
     echo "Error " . mysqli_error($con);
 }
 
+$i_q5="SELECT * FROM NUMBER_OF_VEHICLE WHERE DATE='CURDATE()'";
+$i_res5=mysqli_query($con,$i_q5);
+if(!$i_res5){
+	$i_q5="INSERT INTO NUMBER_OF_VEHICLE(DATE,COUNT) VALUES ('CURDATE()',0);";
+	$i_res5=mysqli_query($con,$i_q5);
+	if(!$i_res5){
+		echo "Error while inserting";
+	}
+}
+$data=mysqli_fetch_row($i_res5);
+$count=$data[1]+1;
+$i_q5="UPDATE NUMBER_OF_VEHICLE SET COUNT=$count WHERE DATE='CURDATE()'";
+$i_res5=mysqli_query($con,$i_q5);
+if(!$i_res5){
+	echo "Error while updating";
+}
+
 $i_q4="update SLOT SET STATUS=0x01 where SLOT_ID_='$i_slot'";
 
 $i_res4=mysqli_query($con,$i_q4);
